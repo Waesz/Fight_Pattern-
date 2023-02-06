@@ -9,23 +9,28 @@ public abstract class Personnage {
 
     // on peut rajouter une armure etc...
 
-    int pv=10;//point de vie
+    int pv = 10;//point de vie
     String name; // nom du personnage joueur ou non joueur;
     int energie; // on verra si on met un système d'énergie
     int po; // c'est l'argent avec laquelle il pourra changer d'arme ! (stratégy)
 
-    public Personnage(){};
-
-    public void arme(){
-        ARME.arme();          // on applique le design pattern "strategy"
+    public Personnage() {
     }
 
+    ;
 
+    public String arme_nom() {
+        return ARME.arme_nom();
+    }       // on applique le design pattern "strategy"
 
-
+    public int arme_degat() {
+        return ARME.arme_degat();
+    }  // on applique le design pattern "strategy"
 
 
 ///////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////////////////////////
+
+
     // set arme; permet de changer l'arme de l'utilisateur en appliquant le design pattern Stratégie
     public void setARME(Stratégie_Arme.ARME ARME) {
         this.ARME = ARME;
@@ -40,7 +45,7 @@ public abstract class Personnage {
     }
 
     public void setPv(int pv, int degat) {  // méthode pour faire subir des dégats à un personnage
-        this.pv = pv - degat;               // On peut mettre des valeurs négatifs pour qu'il gagne des pv
+        this.pv = pv - degat;               // On peut mettre des valeurs négatives pour qu'il gagne des pv
     }
 
 

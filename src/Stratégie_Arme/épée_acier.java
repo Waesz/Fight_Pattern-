@@ -1,8 +1,15 @@
 package Stratégie_Arme;
 
-public class épée_acier implements ARME{
+public class épée_acier implements ARME {
+
+
     @Override
-    public void arme() {
-        System.out.println("je suis épée en acier");
+    public String arme_nom() {
+        return "épée en acier";
+    }
+
+    @Override
+    public int arme_degat() {
+        return 10;
     }
 }
