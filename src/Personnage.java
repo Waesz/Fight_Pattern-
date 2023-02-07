@@ -1,9 +1,12 @@
 import Stratégie_Arme.ARME;
+import Stratégie_Arme.Lance_en_Argent;
+import Stratégie_Arme.épée_acier;
+import Stratégie_Arme.épée_bois;
 
 // chose à faire : méthode qui fait perdre pv ou gagner
 // méthode pour gagner et perdre énergie
 //méthode qui fais gagner et perdre argent;
-public abstract class Personnage {
+public abstract class Personnage extends Utilitaire {
 
     ARME ARME;
 
@@ -17,7 +20,6 @@ public abstract class Personnage {
     public Personnage() {
     }
 
-    ;
 
     public String arme_nom() {
         return ARME.arme_nom();
@@ -26,6 +28,39 @@ public abstract class Personnage {
     public int arme_degat() {
         return ARME.arme_degat();
     }  // on applique le design pattern "strategy"
+
+
+    public void changer_arme_aleatoire(int i) {  // change l'arme du personnage et la remplace par une arme aléatoire, dans l'arsenal.
+        i = random(i + 1);
+        if (i == 0) {
+            this.setARME(new épée_bois());
+        }
+        if (i == 1) {
+            this.setARME(new épée_acier());
+        }
+        if (i == 2) {
+            this.setARME(new Lance_en_Argent());
+        } else {
+            System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !)");
+        }
+    }
+
+    public void changer_arme(Joueur j, int i) {      // Change l'arme du personnage joueur pour lui donner une arme en particulier.
+        if (i == 0) {
+            j.setARME(new épée_bois());
+            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+        }
+        if (i == 1) {
+            j.setARME(new épée_acier());
+            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+        }
+        if (i == 2) {
+            j.setARME(new Lance_en_Argent());
+            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+        } else {
+            System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !)");
+        }
+    }
 
 
 ///////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////////////////////////
