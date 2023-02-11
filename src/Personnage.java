@@ -31,34 +31,40 @@ public abstract class Personnage extends Utilitaire {
 
 
     public void changer_arme_aleatoire(int i) {  // change l'arme du personnage et la remplace par une arme aléatoire, dans l'arsenal.
-        i = random(i + 1);
+
         if (i == 0) {
             this.setARME(new épée_bois());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
+            return;
         }
         if (i == 1) {
             this.setARME(new épée_acier());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
+            return;
         }
         if (i == 2) {
             this.setARME(new Lance_en_Argent());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
+            return;
         } else {
-            System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !)");
+            System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !) IN ALEATOIRE");
         }
     }
 
-    public void changer_arme(Joueur j, int i) {      // Change l'arme du personnage joueur pour lui donner une arme en particulier.
+    public void changer_arme( int i) {      // Change l'arme du personnage joueur pour lui donner une arme en particulier.
         if (i == 0) {
-            j.setARME(new épée_bois());
-            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+            this.setARME(new épée_bois());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
         }
         if (i == 1) {
-            j.setARME(new épée_acier());
-            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+            this.setARME(new épée_acier());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
         }
         if (i == 2) {
-            j.setARME(new Lance_en_Argent());
-            System.out.println("le joueur a actuellement une " + "'" + j.arme_nom() + "'" + " et elle fait " + "'" + j.arme_degat() + "'" + " point de dégats.");
+            this.setARME(new Lance_en_Argent());
+            System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégats.");
         } else {
-            System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !)");
+            System.out.println("(DESIGN PATTERN STRATEGY) pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !) NOT ALEATOIRE");
         }
     }
 
@@ -83,5 +89,8 @@ public abstract class Personnage extends Utilitaire {
         this.pv = pv - degat;               // On peut mettre des valeurs négatives pour qu'il gagne des pv
     }
 
+    public int degat(int pv,int degat){  // méthode pour faire subir des dégats à un personnage (utiliser avec le design PATTERN OBSERVER)
+        return  pv - degat;              // On peut mettre des valeurs négatives pour qu'il gagne des pv
+    }
 
 }
