@@ -13,7 +13,6 @@ public class Utilitaire {
     }
 
     public String nom_random(){
-        //String nom = nomList[random(nomList.length)];
         String nom = nomList[random(nomList.length)];
         return nom;
     }

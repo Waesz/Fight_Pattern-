@@ -25,13 +25,13 @@ public class Combat implements Sujet{
             for ( Observateur obs: observateurs) {
                 obs.actualiser(pv);}
         }
-        else{
+        else{ // sinon modifie pv et po
             for ( Observateur obs: observateurs) {
             obs.actualiser(pv,po);}
         }
     }
 
-    public void setData_personnage(int pv, int po) { // Si on veut mettre à jour que les pv, on met la valeur 0 à po à zero !
+    public void setData_personnage(int pv, int po) { // Si on veut mettre à jour que les pv, on met la valeur 0 à la variable po !
         this.pv = pv;
         this.po = po;
         notiferObservateurs();

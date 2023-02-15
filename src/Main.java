@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main extends Utilitaire {
 
-    static Combat combat_PNJ= new Combat();     // création de l'observeur pour les PNJ !
-    static Combat combat_joueur= new Combat();  // création de l'observeur pour les personnages joueurs !
+    static Combat combat_PNJ= new Combat();     // création de observer pour les PNJ !
+    static Combat combat_joueur= new Combat();  // création de observer pour les personnages joueurs !
     static Joueur joueur = new Joueur(combat_joueur);   // création de l'objet joueur qui sera abonnée à l'observateur "combat_joueur"
     static PNJ PNJ = new PNJ(combat_PNJ);      // création de l'objet joueur qui sera abonnée à l'observateur "combat_PNJ"
 
@@ -76,7 +76,7 @@ public class Main extends Utilitaire {
      ///////  Lancement du premier combat  ////////////
         Main.bagarre();
         System.out.println("");
-        // fin du combat, on pourra gagner des po et changer d'arme !!
+        // fin du combat, on pourra gagner des po et changer d'arme !! (amélioration du jeu pour éviter de donner une arme aléatoire au joueur [à mettre dans la méthode bagarre] )
         System.out.println("bravo tu as gagné ton 1er combat !");
         System.out.println("");
      /////// Fin du premier combat
@@ -99,9 +99,9 @@ public class Main extends Utilitaire {
             System.out.println("");
             System.out.println("Fin du combat");
 
-            // mettre en place une boutique pour pouvoir acheter une nouvelle arme + acheter des pv puis parramétrer les futurs combats
+            // mettre en place une boutique pour pouvoir acheter une nouvelle arme + acheter des pv puis parramétrer les futurs combats [à mettre dans la méthode bagarre]
 
-            // faire un combat 2 joueur vs 2 pnj et utiliser suppimer abonnée OBSERVER
+            // faire un combat 2 joueur vs 2 pnj et utiliser suppimer abonnée OBSERVER {[en vrai c'est IMPORTANT; il faut le mettre en place][soit on crée une nouvelle méthode soit on surchage la méthode bagarre()]}
 
 
     }

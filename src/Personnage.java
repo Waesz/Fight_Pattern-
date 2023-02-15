@@ -3,9 +3,8 @@ import Stratégie_Arme.Lance_en_Argent;
 import Stratégie_Arme.épée_acier;
 import Stratégie_Arme.épée_bois;
 
-// chose à faire : méthode qui fait perdre pv ou gagner
+// chose à faire en plus :
 // méthode pour gagner et perdre énergie
-//méthode qui fais gagner et perdre argent;
 public abstract class Personnage extends Utilitaire {
 
     ARME ARME;
@@ -13,9 +12,9 @@ public abstract class Personnage extends Utilitaire {
     // on peut rajouter une armure etc...
 
     int pv = 10;//point de vie
-    String name; // nom du personnage joueur ou non joueur;
+    String name; // nom du personnage joueur ou non joueur
     int energie; // on verra si on met un système d'énergie
-    int po; // c'est l'argent avec laquelle il pourra changer d'arme ! (stratégy)
+    int po; // c'est l'argent avec laquelle il pourra changer d'arme ! (stratégy) [ pas mit en place]
 
     public Personnage() {
     }
