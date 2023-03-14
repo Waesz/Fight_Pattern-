@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Combat implements Sujet{
 
-    private List<Observateur> observateurs = new ArrayList();
-    private int pv;
-    private int po;
+    private List<Observateur> observateurs = new ArrayList<>();
+    private int degats;
+    private int po;// piéce d'or
 
     @Override
     public void enregistrerObservateur(Observateur o) {
@@ -22,18 +22,23 @@ public class Combat implements Sujet{
     @Override
     public void notiferObservateurs() {
         if (po == 0){ // permet de modifier seulement les pv et pas (po + pv)
-            for ( Observateur obs: observateurs) {
-                obs.actualiser(pv);}
+            for ( Observateur observateur: observateurs) {
+                observateur.actualiser(degats);}
         }
+
         else{ // sinon modifie pv et po
-            for ( Observateur obs: observateurs) {
-            obs.actualiser(pv,po);}
+            for ( Observateur observateur: observateurs) {
+            observateur.actualiser(degats, po);}
         }
     }
 
-    public void setData_personnage(int pv, int po) { // Si on veut mettre à jour que les pv, on met la valeur 0 à la variable po !
-        this.pv = pv;
+    public void setData_personnage(int degat, int po) { // Si on veut mettre à jour que les pv, on met la valeur 0 à la variable po !
+        this.degats = degat;
         this.po = po;
         notiferObservateurs();
+    }
+
+    public int observateursize(){
+        return observateurs.size();
     }
 }
