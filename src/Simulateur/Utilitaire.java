@@ -1,3 +1,7 @@
+package Simulateur;
+
+import Personnage.Joueur;
+import Personnage.PNJ;
 import Stratégie_Observateur.Combat;
 
 import java.util.ArrayList;
@@ -7,7 +11,7 @@ import java.util.Scanner;
 
 public class Utilitaire {
 
-    static Combat combat_PNJ = new Combat();     // création de observer pour les PNJ !
+    static Combat combat_PNJ = new Combat();     // création de observer pour les Personnage.PNJ !
     static Combat combat_joueur = new Combat();  // création de observer pour les personnages joueurs !
     static Joueur joueur_init = new Joueur(combat_joueur);   // création de l'objet joueur qui sera abonnée à l'observateur "combat_joueur"
     static PNJ pnj_init = new PNJ(combat_PNJ);      // création de l'objet joueur qui sera abonnée à l'observateur "combat_PNJ"
@@ -93,7 +97,7 @@ public class Utilitaire {
     //////////////////////////  on va faire la bagarre  //////////////////////////
 
 
-    public static List<Joueur> bagarre(List<Joueur> joueurList, List<PNJ> pnjList) {     // méthode qui permettra de faire bagarrer les PNJ et les joueurs
+    public static List<Joueur> bagarre(List<Joueur> joueurList, List<PNJ> pnjList) {     // méthode qui permettra de faire bagarrer les Personnage.PNJ et les joueurs
         Scanner scanner = new Scanner(System.in);
 
         List<PNJ> liste_pnj_mort= new ArrayList<>();

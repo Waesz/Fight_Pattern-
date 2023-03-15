@@ -1,8 +1,12 @@
+package Personnage;
+
 import Stratégie_Arme.épée_bois;
 import Stratégie_Observateur.Observateur;
 import Stratégie_Observateur.Sujet;
 
 public class Joueur extends Personnage implements Observateur {
+
+
 
     private Sujet combat;
 
@@ -12,6 +16,7 @@ public class Joueur extends Personnage implements Observateur {
         pv = 150;
         po = 0;
         this.combat = combat;
+        medal="";
 
         combat.enregistrerObservateur(this);
     }
@@ -46,4 +51,10 @@ public class Joueur extends Personnage implements Observateur {
     public void désabonner() {
         combat.supprimerObservateur(this);
     }
+
+    public Sujet getCombat() {
+        return combat;
+    }
 }
+
+

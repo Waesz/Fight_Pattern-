@@ -1,4 +1,8 @@
+package Simulateur;
 
+import Decorateur.weapon.A_lot_of_damage;
+import Personnage.Joueur;
+import Stratégie_Arme.ARME;
 
 import java.util.ArrayList;
 
@@ -10,9 +14,9 @@ import java.util.List;
 
 avoir un décorateur : des bonus joueurs qui vont lui modifier ses pv (il va recevoir un objet magique qui lui donne des pv !)
 
-optimiser la stratégie arme avec un enum arme et une liste d'arme !
-
 Mise en place d'une boutique à la fin de chaque bagarre ?
+
+Mettre en private les champs dans la class personnage
  */
 
 public class Main extends Utilitaire {
@@ -27,17 +31,30 @@ static List<Joueur> list_de_joueurs = new ArrayList<>();
             joueur.changer_arme(random(3));
         }
 
-        while (!list_de_joueurs.isEmpty()){
+        System.out.println("\n");
+        // les armes sont décorées d'un boost
+        for (Joueur joueur: list_de_joueurs) {
+         ARME A= new A_lot_of_damage(joueur.getARME());
+         joueur.setARME(A);
+         System.out.println("nom : "+joueur.name+"// Arme : "+joueur.arme_nom()+"// dégâts : "+joueur.arme_degat());
+        }
+
+        /*for (Joueur joueur2: list_de_joueurs){
+            joueur2 = new Medal_of_honor(joueur2);
+            joueur2.getMedal();
+        }*/
+
+/*        while (!list_de_joueurs.isEmpty()){
 
             System.out.println("\n Lancement d'un nouveau combat !\n");
 
-            list_de_joueurs =bagarre(list_de_joueurs ,  generator_list_pnj(5));  // le groupe du joueur combat les pnj
+            list_de_joueurs =bagarre (list_de_joueurs, generator_list_pnj(5));  // le groupe du joueur combat les pnj
 
             System.out.println("\n Fin du combat, vous avez gagner ! \n");
             for (Joueur joueur: list_de_joueurs){
                 joueur.changer_arme(random(3));
             }
-        }
+        }*/
 
         System.out.println("Il n'y a plus de combattant en vie dans votre groupe !");
     }}
