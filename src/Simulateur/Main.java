@@ -10,9 +10,7 @@ import java.util.List;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* to do list
-
-avoir un décorateur : des bonus joueurs qui vont lui modifier ses pv (il va recevoir un objet magique qui lui donne des pv !)
+/* to do list avoir un décorateur : des bonus joueurs qui vont lui modifier ses pv (il va recevoir un objet magique qui lui donne des pv !)
 
 Mise en place d'une boutique à la fin de chaque bagarre ?
 
@@ -31,15 +29,16 @@ static List<Joueur> list_de_joueurs = new ArrayList<>();
             joueur.changer_arme(random(3));
         }
 
+
         System.out.println("\n");
-        // les armes sont décorées d'un boost
+        // les armes sont décorées
         for (Joueur joueur: list_de_joueurs) {
-         ARME A= new A_lot_of_damage(joueur.getARME());
-         joueur.setARME(A);
-         System.out.println("nom : "+joueur.name+"// Arme : "+joueur.arme_nom()+"// dégâts : "+joueur.arme_degat());
+            decorator_arme(joueur);
         }
 
-        /*for (Joueur joueur2: list_de_joueurs){
+        /*
+        //des medailles pour les joueurs non fonctionnelles
+        for (Joueur joueur2: list_de_joueurs){
             joueur2 = new Medal_of_honor(joueur2);
             joueur2.getMedal();
         }*/

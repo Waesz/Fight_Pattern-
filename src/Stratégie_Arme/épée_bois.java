@@ -9,6 +9,6 @@ public class épée_bois implements ARME {
 
     @Override
     public int arme_degat() {
-        return 1;
+        return 2;
     }
 }

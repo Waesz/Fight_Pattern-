@@ -1,7 +1,11 @@
 package Simulateur;
 
+import Decorateur.weapon.A_lot_of_damage;
+import Decorateur.weapon.Rubis;
+import Decorateur.weapon.emousser;
 import Personnage.Joueur;
 import Personnage.PNJ;
+import Stratégie_Arme.ARME;
 import Stratégie_Observateur.Combat;
 
 import java.util.ArrayList;
@@ -64,6 +68,15 @@ public class Utilitaire {
             list.add(PNJ);
         }
         return list;
+    }
+
+    public static void decorator_arme(Joueur joueur){
+        int i =random(3);
+
+        if (i==0){joueur.setARME(new A_lot_of_damage(joueur.getARME()));}
+        else if (i==1) { joueur.setARME(new Rubis(joueur.getARME()));}
+        else {joueur.setARME(new emousser(joueur.getARME()));}
+        System.out.println("(Design Pattern Décorateur ) Nom : "+joueur.name+"// Arme : "+joueur.arme_nom()+"// dégâts : "+joueur.arme_degat());
     }
 
     public static List<Joueur> initialisation(){
