@@ -1,8 +1,8 @@
 package Simulateur;
 
-import Decorateur.weapon.A_lot_of_damage;
+import Factory.Factory_perso_concret;
+import Factory.Factory_Personnage;
 import Personnage.Joueur;
-import Stratégie_Arme.ARME;
 
 import java.util.ArrayList;
 
@@ -23,8 +23,10 @@ static List<Joueur> list_de_joueurs = new ArrayList<>();
     public static void main(String[] args) {
         list_de_joueurs = initialisation();
 
-        list_de_joueurs= generator_list_joueur(list_de_joueurs.get(0),4);
 
+
+        Factory_Personnage usine= new Factory_perso_concret();
+        list_de_joueurs.addAll(usine.creer_list_personnage("joueur",4))  ;
         for (Joueur joueur: list_de_joueurs){
             joueur.changer_arme(random(3));
         }
@@ -43,7 +45,7 @@ static List<Joueur> list_de_joueurs = new ArrayList<>();
             joueur2.getMedal();
         }*/
 
-/*        while (!list_de_joueurs.isEmpty()){
+/*       while (!list_de_joueurs.isEmpty()){
 
             System.out.println("\n Lancement d'un nouveau combat !\n");
 

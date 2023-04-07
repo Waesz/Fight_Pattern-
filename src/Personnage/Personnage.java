@@ -1,5 +1,6 @@
 package Personnage;
 
+import Decorateur.Medal.Decorator_medal;
 import Stratégie_Arme.ARME;
 import Stratégie_Arme.Lance_en_Argent;
 import Stratégie_Arme.épée_acier;
@@ -8,20 +9,19 @@ import Simulateur.Utilitaire;
 
 
 // chose à faire en plus :
-// méthode pour gagner et perdre énergie
-public abstract class Personnage extends Utilitaire {
+// méthode pour gagner et perdre énergie & pièce d'or (po)
+public abstract class Personnage extends Utilitaire implements PersonnageInterface {
 
 
 
-    ARME ARME;
-    String medal;
+   private ARME ARME;
+   private String medal;
     // on peut rajouter une armure etc...
 
-    public  int pv = 10;//point de vie
-    public String name; // nom du personnage joueur ou non joueur
+    private   int pv = 10;//point de vie
+
+    private String name; // nom du personnage joueur ou non joueur
     public int po; // c'est l'argent avec laquelle il pourra changer d'arme ! (strategy) [ pas mit en place]
-    public Personnage() {
-    }
 
 
     public String arme_nom() {
@@ -56,13 +56,21 @@ public abstract class Personnage extends Utilitaire {
 ///////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////////////////////////
 
 
-    // set arme ; permet de changer l'arme de l'utilisateur en appliquant le design Pattern Stratégie
+    // setARME : permet de changer l'arme de l'utilisateur en appliquant le design Pattern Stratégie
     public void setARME(Stratégie_Arme.ARME ARME) {
         this.ARME = ARME;
+    }
+    public Stratégie_Arme.ARME getARME() {
+        return ARME;
     }
 
     public String getMedal() {
         return this.medal;
+    }
+    public String setMedal(Decorator_medal medal){return null;} // je ne suis pas sur
+
+    public void setMedal(String medal) {
+        this.medal = medal;
     }
 
     public int getPv() {
@@ -73,9 +81,15 @@ public abstract class Personnage extends Utilitaire {
         this.pv = pv;
     }
 
-    public Stratégie_Arme.ARME getARME() {
-        return ARME;
+    public String getName() {
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
 
 }

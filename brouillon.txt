@@ -1,0 +1,64 @@
+
+
+
+    public String arme_nom() {
+        return animal.source_de_degat;
+    }
+
+    public int arme_degat() {return animal.degats;}
+
+    public void changer_arme(int i) {  // change l'arme du personnage et la remplace par une arme aléatoire, dans l'arsenal.
+        System.out.println("un animal de change pas de source de dégât");
+    }
+
+///////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////////////////////////
+
+
+    // setARME : permet de changer l'arme de l'utilisateur en appliquant le design Pattern Stratégie
+    public void setARME(Stratégie_Arme.ARME ARME) {}// il ne se passe rien car un animal ne change pas de source de dégât ;
+
+    public String getMedal() {return "";}
+
+    @Override
+    public void setMedal(String medal) {}
+
+
+    public int getPv() {
+        return animal.pv;
+    }
+
+    public void setPv(int pv) { animal.pv=pv; }
+
+
+    @Override
+    public String getName() {return animal.name;}
+
+    @Override
+    public void setName(String name) { animal.name=name;}
+
+    @Override
+    public ARME getARME() {
+        System.out.println("ne peut pas sortir un type ARME !");
+        // faut faire appelle a un adaotaeur de arme !
+        return null;
+    }
+
+
+    @Override
+    public void afficher_combat() {
+        {System.out.println("(DESIGN PATTERN OBSERVER) point de vie du Personnage.PNJ " + "'"+this.animal.name+"'"+ ": " + this.getPv());}
+    }
+
+    @Override
+    public void actualiser(int degats) {
+        this.animal.pv = this.animal.pv - degats;
+        afficher_combat();
+    }
+
+    @Override
+    public void actualiser(int degats, int po) {
+        System.out.println("(DESIGN PATTERN OBSERVER) Un animal ne peut pas avoir de pièce d'or");
+    }
+
+    @Override
+    public void désabonner() {this.animal.getcombat().supprimerObservateur(this);}
