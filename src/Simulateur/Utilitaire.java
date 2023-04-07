@@ -114,6 +114,13 @@ public class Utilitaire {
         liste_de_joueur.add(joueur_init);
         liste_de_joueur =bagarre(liste_de_joueur, usine.creer_list_personnage("pnj",1));
         System.out.println("\n bravo tu as gagné ton 1er combat ! \n");
+
+        try {
+            Thread.sleep(2000);  // donne un délai
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         return liste_de_joueur;
     }
 
@@ -212,6 +219,12 @@ public class Utilitaire {
             joueurList.remove(joueur);
         }
         liste_joueur_mort.clear();
+
+        try {
+            Thread.sleep(2000);  // donne un délai entre chaque échange de coup !
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         return joueurList;
     }

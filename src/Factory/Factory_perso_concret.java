@@ -33,6 +33,7 @@ public class Factory_perso_concret extends Factory_Personnage{
             PNJ PNJ = new PNJ(combat_PNJ);
             PNJ.setName(name_random());
             PNJ.setPv(random(15,10));
+            PNJ.changer_arme(random(3));
             list.add(PNJ);
         }
         return list;
