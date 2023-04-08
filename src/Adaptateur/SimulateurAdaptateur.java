@@ -26,7 +26,6 @@ public class SimulateurAdaptateur extends Utilitaire {
         ((PNJ) lion).getName();
 
        // PNJ test = (Objects) lion;
-
         System.out.println("\n fin de la présentation de l'adaptateur.");
     }
 }

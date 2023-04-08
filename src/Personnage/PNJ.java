@@ -1,6 +1,7 @@
 package Personnage;
 
 import Decorateur.Medal.Decorator_medal;
+import Singleton.ScreenPrinter;
 import Stratégie_Arme.épée_bois;
 import Stratégie_Observateur.Observateur;
 import Stratégie_Observateur.Sujet;
@@ -20,7 +21,9 @@ public class PNJ extends Personnage implements Observateur,PNJInterface {
 
     }
 
-    public void afficher_combat() {System.out.println("(DESIGN PATTERN OBSERVER) point de vie du Personnage.PNJ " + "'"+this.getName()+"'"+ ": " + this.getPv());
+    public void afficher_combat() {
+        printer.setColor(ScreenPrinter.PURPLE);
+        System.out.println("(DESIGN PATTERN OBSERVER) point de vie du Personnage.PNJ " + "'"+this.getName()+"'"+ ": " + this.getPv());
     }
 
     @Override
@@ -31,6 +34,7 @@ public class PNJ extends Personnage implements Observateur,PNJInterface {
 
     @Override
     public void actualiser(int degats, int po) {
+        printer.setColor(ScreenPrinter.RED);
         System.out.println("(DESIGN PATTERN OBSERVER) ha gros, il y a un problème un Personnage de type PNJ ne peut pas voir ses po être modifier !");
     }
 

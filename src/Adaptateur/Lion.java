@@ -1,5 +1,6 @@
 package Adaptateur;
 
+import Singleton.ScreenPrinter;
 import Stratégie_Observateur.Observateur;
 import Stratégie_Observateur.Sujet;
 
@@ -18,6 +19,7 @@ public class Lion extends Animaux implements Observateur {
 
 
     public void afficher_combat() {
+        printer.setColor(ScreenPrinter.GREEN);
         System.out.println("(DESIGN PATTERN OBSERVER) point de vie de l'animal " + "'" + this.name + "'" + ": " + this.pv);
     }
 
@@ -30,6 +32,7 @@ public class Lion extends Animaux implements Observateur {
 
     @Override
     public void actualiser(int degats, int po) {
+        printer.setColor(ScreenPrinter.RED);
         System.out.println("(DESIGN PATTERN OBSERVER) ha gros, il y a un problème un animal de type Lion ne peut pas voir ses po être modifier !");
     }
 

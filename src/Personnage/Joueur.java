@@ -1,5 +1,6 @@
 package Personnage;
 
+import Singleton.ScreenPrinter;
 import Stratégie_Arme.épée_bois;
 import Stratégie_Observateur.Observateur;
 import Stratégie_Observateur.Sujet;
@@ -21,14 +22,17 @@ public class Joueur extends Personnage implements Observateur {
     }
 
     public void afficher_combat() {
+        printer.setColor(ScreenPrinter.GREEN);
         System.out.println("(DESIGN PATTERN OBSERVER) point de vie du joueur/compagnon " + "'" + this.getName() + "'" + ": " + this.getPv());
     }
 
     public void afficher_combat_fin() {
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("(DESIGN PATTERN OBSERVER) Bravo vous avez gagner votre combat. Les point de vie du joueur " + "'" + this.getName() + "'" + ": " + this.getPv() + ". Votre nombre de pièce d'or que possède le joueur: " + this.po);
     }
 
     public void afficher_po_gagner(int po) {
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println(" (DESIGN PATTERN OBSERVER) Vous avez gagner " + po + " pièce d'or.");
     }
 

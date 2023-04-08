@@ -1,5 +1,7 @@
 package Stratégie_Observateur;
 
+import Singleton.ScreenPrinter;
+
 //cette interface est implémenté par la class joueur et la class Personnage.PNJ qui vont voir certaine de leur stat changer
 public interface Observateur {
     void actualiser(int pv); // actualise les pv des abonnées
