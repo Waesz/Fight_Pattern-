@@ -2,6 +2,7 @@ package Adaptateur;
 
 import Decorateur.Medal.Decorator_medal;
 import Personnage.PNJInterface;
+import Singleton.ScreenPrinter;
 import Stratégie_Arme.ARME;
 import Stratégie_Observateur.Observateur;
 import Stratégie_Observateur.Sujet;
@@ -16,6 +17,7 @@ import Stratégie_Observateur.Sujet;
 // On ne peut pas avoir des varibles  !! il faut avoir que des méthodes !!
 
 public class AdaptateurAnimaux implements PNJInterface, Observateur {
+    public ScreenPrinter printer = ScreenPrinter.getInstance();
     Animaux animal;
     private Sujet combat;
 
@@ -28,6 +30,7 @@ public class AdaptateurAnimaux implements PNJInterface, Observateur {
 
     @Override
     public void afficher_combat() {
+        printer.setColor(ScreenPrinter.GREEN);
         {System.out.println("(DESIGN PATTERN OBSERVER) point de vie de l'animal" + "'"+animal.name+"'"+ ": " + animal.pv);}
     }
 
@@ -39,6 +42,7 @@ public class AdaptateurAnimaux implements PNJInterface, Observateur {
 
     @Override
     public void actualiser(int degats, int po) {
+        printer.setColor(ScreenPrinter.RED);
         System.out.println("(DESIGN PATTERN OBSERVER) Un animal ne peut pas avoir de pièce d'or");
     }
 
@@ -54,6 +58,7 @@ public class AdaptateurAnimaux implements PNJInterface, Observateur {
 
     @Override
     public ARME getARME() {
+        printer.setColor(ScreenPrinter.RED);
         System.out.println("ne peut pas sortir un type ARME !");
         // faut faire appelle a un adaotaeur de arme !
         return null;
@@ -101,6 +106,7 @@ public class AdaptateurAnimaux implements PNJInterface, Observateur {
 
     @Override
     public void changer_arme(int i) {
+        printer.setColor(ScreenPrinter.RED);
         System.out.println("un animal de change pas de source de dégât");
     }
 }

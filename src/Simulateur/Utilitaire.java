@@ -7,6 +7,7 @@ import Factory.Factory_perso_concret;
 import Factory.Factory_Personnage;
 import Personnage.Joueur;
 import Personnage.PNJ;
+import Singleton.ScreenPrinter;
 import Stratégie_Observateur.Combat;
 
 import java.util.ArrayList;
@@ -14,7 +15,11 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.print.event.PrintEvent;
+
 public class Utilitaire {
+
+    public ScreenPrinter printer = ScreenPrinter.getInstance();
 
     public static Combat combat_PNJ = new Combat();     // création de observer pour les Personnage.PNJ !
     public static Combat combat_joueur = new Combat();  // création de observer pour les personnages joueurs !
@@ -84,10 +89,14 @@ public class Utilitaire {
         if (i==0){joueur.setARME(new A_lot_of_damage(joueur.getARME()));}
         else if (i==1) { joueur.setARME(new Rubis(joueur.getARME()));}
         else {joueur.setARME(new emousser(joueur.getARME()));}
+        ScreenPrinter printer = ScreenPrinter.getInstance();
+        printer.setColor(ScreenPrinter.BLUE);
         System.out.println("(Design Pattern Décorateur ) Nom : "+joueur.getName()+" // Arme : "+joueur.arme_nom()+" // dégâts : "+joueur.arme_degat());
     }
 
     public static List<Joueur> initialisation(){
+        ScreenPrinter printer = ScreenPrinter.getInstance();
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("******************************************************************************* LANCEMENT DU JEU ******************************************************************************* \n");
         System.out.println("                                            Bonjour et bienvenue dans votre jeu FIGHT PATTERN ! \n");
 
@@ -96,23 +105,30 @@ public class Utilitaire {
         while (!correct_name) {
             try {
                 Scanner sc = new Scanner(System.in);
+                printer.setColor(ScreenPrinter.YELLOW);
                 System.out.println("Donner un nom a votre personnage :");
+                printer.setColor(ScreenPrinter.RESET);
                 joueur_init.setName(sc.next("[a-zA-Z]*"));
                 correct_name = true;
                 System.out.println("\n");
             } catch (InputMismatchException e) {
+                printer.setColor(ScreenPrinter.RED);
                 System.out.println("Nom interdit, veuillez choisir un autre nom s'il vous plaît.");
             }
         }
 
 
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("Votre personnage s'appelle : "+ joueur_init.getName());
+        printer.setColor(ScreenPrinter.BLUE);
         System.out.println("le joueur a actuellement une " + "'" + joueur_init.arme_nom() + "'" + " et elle fait " + "'" + joueur_init.arme_degat() + "'" + " point de dégâts. \n");
 
         List<Joueur> liste_de_joueur= new ArrayList<>();
         Factory_Personnage usine = new Factory_perso_concret();
         liste_de_joueur.add(joueur_init);
         liste_de_joueur =bagarre(liste_de_joueur, usine.creer_list_personnage("pnj",1));
+
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("\n bravo tu as gagné ton 1er combat ! \n");
 
         try {
@@ -130,23 +146,30 @@ public class Utilitaire {
 
     public static List<Joueur> bagarre(List<Joueur> joueurList, List<PNJ> pnjList) {     // méthode qui permettra de faire bagarrer les Personnage.PNJ et les joueurs
         Scanner scanner = new Scanner(System.in);
+        ScreenPrinter printer = ScreenPrinter.getInstance();
 
         List<PNJ> liste_pnj_mort= new ArrayList<>();
         List<Joueur> liste_joueur_mort= new ArrayList<>();
 
+        printer.setColor(ScreenPrinter.PURPLE);
         System.out.println("\n");
         for (PNJ pnj : pnjList) {
             System.out.println("Vous allez combattre " + pnj.getName() + ", ses stats sont : // PV :" + pnj.getPv() + " // son arme est " + "'" + pnj.arme_nom() + "'" + ", son arme fait " + "'" + pnj.arme_degat() + "'" + " point de dégâts.\n");
         }
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("Votre équipe se compose de :\n");
 
+        printer.setColor(ScreenPrinter.BLUE);
         for (Joueur joueur : joueurList) {
             System.out.println("nom: " + "'" + joueur.getName() + "'" + "," +"// PV: "+joueur.getPv()+"// ,"+ " nom de l'arme:" + "'" + joueur.arme_nom() + "'" + " et elle fait " + "'" + joueur.arme_degat() + "'" + " point de dégâts. \n");
         }
 
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("Voulez-vous lancer le combat ? \n");
         System.out.println("Entrer n'importe qu'elle valeur pour lancer le combat \n");
+        printer.setColor(ScreenPrinter.RESET);
         scanner.next();
+        printer.setColor(ScreenPrinter.YELLOW);
         System.out.println("//////////////////////////////////////////////");
         System.out.println("////////  C'est l'heure du combat ! ////////////");
         System.out.println("//////////////////////////////////////////////");
@@ -176,6 +199,7 @@ public class Utilitaire {
             liste_joueur_mort.clear();
             if (joueurList.isEmpty()) break;
 
+            printer.setColor(ScreenPrinter.YELLOW);
             System.out.println("dégâts totaux des joueurs: " + degat_total_joueur);
 
 
@@ -192,6 +216,7 @@ public class Utilitaire {
             liste_pnj_mort.clear();
             if (pnjList.isEmpty()) break;
 
+            printer.setColor(ScreenPrinter.YELLOW);
             System.out.println("dégâts totaux des pnj: " + degat_total_pnj);
 
 

@@ -6,13 +6,12 @@ import Stratégie_Arme.Lance_en_Argent;
 import Stratégie_Arme.épée_acier;
 import Stratégie_Arme.épée_bois;
 import Simulateur.Utilitaire;
+import Singleton.ScreenPrinter;
 
 
 // chose à faire en plus :
 // méthode pour gagner et perdre énergie & pièce d'or (po)
 public abstract class Personnage extends Utilitaire implements PersonnageInterface {
-
-
 
    private ARME ARME;
    private String medal;
@@ -36,16 +35,20 @@ public abstract class Personnage extends Utilitaire implements PersonnageInterfa
     public void changer_arme(int i) {  // change l'arme du personnage et la remplace par une arme aléatoire, dans l'arsenal.
         if (i == 0) {
             this.setARME(new épée_bois());
+            printer.setColor(ScreenPrinter.BLUE);
             System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégâts.");
         }
         else if (i == 1) {
             this.setARME(new épée_acier());
+            printer.setColor(ScreenPrinter.BLUE);
             System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégâts.");
         }
         else if (i == 2) {
             this.setARME(new Lance_en_Argent());
+            printer.setColor(ScreenPrinter.BLUE);
             System.out.println("(DESIGN PATTERN STRATEGY) le personnage "+this.name+" a actuellement une " + "'" + this.arme_nom() + "'" + " et elle fait " + "'" + this.arme_degat() + "'" + " point de dégâts.");
         } else {
+            printer.setColor(ScreenPrinter.RED);
             System.out.println("pas de changement d'arme ! (valeur d'identifiant d'arme incorrect !) ");
         }
     }

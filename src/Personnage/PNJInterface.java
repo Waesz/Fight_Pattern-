@@ -1,6 +1,7 @@
 package Personnage;
 
 import Decorateur.Medal.Decorator_medal;
+import Singleton.ScreenPrinter;
 
 public interface PNJInterface {
 
