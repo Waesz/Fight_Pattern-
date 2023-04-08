@@ -35,7 +35,7 @@ public class PNJ extends Personnage implements Observateur,PNJInterface {
     @Override
     public void actualiser(int degats, int po) {
         printer.setColor(ScreenPrinter.RED);
-        System.out.println("(DESIGN PATTERN OBSERVER) ha gros, il y a un problème un Personnage de type PNJ ne peut pas voir ses po être modifier !");
+        System.out.println("(DESIGN PATTERN OBSERVER) Un Personnage de type PNJ ne peut pas voir son nombre de pièce d'or être modifier !");
     }
 
     @Override

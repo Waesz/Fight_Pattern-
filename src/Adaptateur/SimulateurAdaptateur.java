@@ -23,7 +23,7 @@ public class SimulateurAdaptateur extends Utilitaire {
         lion.changer_arme(2);
         lion.getARME();
 
-        ((PNJ) lion).getName();
+        //((PNJ) lion).getName();
 
        // PNJ test = (Objects) lion;
         System.out.println("\n fin de la présentation de l'adaptateur.");
