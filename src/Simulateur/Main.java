@@ -10,12 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* to do list avoir un décorateur : des bonus joueurs qui vont lui modifier ses pv (il va recevoir un objet magique qui lui donne des pv !)
 
+/*
 Mise en place d'une boutique à la fin de chaque bagarre ?
-
-Mettre en private les champs dans la class personnage
  */
 
 public class Main extends Utilitaire {

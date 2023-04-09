@@ -227,7 +227,7 @@ public class Utilitaire {
 
 
             try {
-                Thread.sleep(200);  // donne un délai entre chaque échange de coup !
+                Thread.sleep(500);  // donne un délai entre chaque échange de coup !
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -246,7 +246,7 @@ public class Utilitaire {
         liste_joueur_mort.clear();
 
         try {
-            Thread.sleep(2000);  // donne un délai entre chaque échange de coup !
+            Thread.sleep(2000);  // donne un délai avant chaque cycle
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

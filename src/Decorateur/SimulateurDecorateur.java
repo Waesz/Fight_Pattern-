@@ -1,5 +1,7 @@
 package Decorateur;
 
+import Decorateur.Medal.Medal_of_honor;
+import Decorateur.weapon.A_lot_of_damage;
 import Factory.Factory_perso_concret;
 import Factory.Factory_Personnage;
 import Personnage.Joueur;
@@ -30,6 +32,9 @@ public class SimulateurDecorateur extends Utilitaire {
         for (Joueur joueur : list_de_joueurs) {
             decorator_arme(joueur);
         }
+
+
+
     }
 
 }
